@@ -1,29 +1,22 @@
-const int buttonPin = 2;
 const int ledPin = 13;
-
-int buttonState = 0;
+int valueFromProcessing;
 
 void setup() {
   // put your setup code here, to run once:
   Serial.begin(9600);
-
-  pinMode(ledPin, OUTPUT);
-  pinMode(buttonPin, INPUT);
-    
+  pinMode(ledPin, OUTPUT);    
 }
 
 void loop() {
-  // put your main code here, to run repeatedly:
-  buttonState = digitalRead(buttonPin);
-
-  if(buttonState == HIGH) {
-    digitalWrite(ledPin, HIGH);
-  } else {
-    digitalWrite(ledPin, LOW);
+  while (Serial.available() ) {
+    valueFromProcessing = Serial.read();
   }
 
+  if ( valueFromProcessing == 'H') {
+     digitalWrite(ledPin, HIGH);
+  } else if (valueFromProcessing == 'L') {
+     digitalWrite(ledPin, LOW);
+  }
   
-  //Serial.print(buttonState);
-  Serial.write(buttonState);
- 
+  delay(100);
 }
