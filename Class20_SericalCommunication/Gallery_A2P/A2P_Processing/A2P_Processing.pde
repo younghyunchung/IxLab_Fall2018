@@ -97,17 +97,16 @@ void draw() {
   rect(150, 300, 20, 20);
   stroke(0);
   rect(152, 302, 16, 12);
-  
+
   while ( myPort.available() > 0 ) {
     val = myPort.read();
   }
-  
+
   if (val == 0) {
     value = 0;
   } else if (val == 1) {
     value = 225;
   }
-  
 }
 
 void mousePressed() {

@@ -102,11 +102,11 @@ void draw() {
     val = myPort.read();
   }
   
-  if (val == 0) {
-    value = 0;
-  } else if (val == 1) {
-    value = 225;
-  }
+  //if (val == 0) {
+  //  value = 0;
+  //} else if (val == 1) {
+  //  value = 225;
+  //}
   
 }
 
@@ -115,9 +115,11 @@ void mousePressed() {
   if ( mouseX>150 && mouseX<170  && mouseY>300 && mouseY<320  ) {
     if (value==0) {
       value=225;
+      myPort.write('H');
     } else {
       if (value==225) {
         value=0;
+        myPort.write('L');
       }
     }
   }
